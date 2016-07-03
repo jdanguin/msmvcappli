@@ -27,9 +27,9 @@ namespace MVCAppli.Tests.Controllers
         /// <summary>
         /// Set Up Context Controller 
         /// </summary>
-        /// <param name="controller"></param>
-        /// <param name="httpMethod"></param>
-        /// <param name="controllerMethod"></param>
+        /// <param name="controller">TestController</param>
+        /// <param name="httpMethod">method Get or Post</param>
+        /// <param name="controllerMethod">method in TestController</param>
         /// <returns></returns>
         private TestController SetUpController(TestController controller, string httpMethod, string controllerMethod)
         {

@@ -11,14 +11,22 @@ using System.Xml;
 
 namespace MVCAppli.Controllers
 {
+    /// <summary>
+    /// Methods WS API regrouped in test controller
+    /// </summary>
     [RoutePrefix("api/test")]
     public class TestController : ApiController
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-
         #region fibonacci
         // GET: api/test/fibonacci/{number}
+        /// <summary>
+        /// Use fibonacci formula 
+        /// with accept segmentation (1 to 100) else return -1
+        /// </summary>
+        /// <param name="number">input number</param>
+        /// <returns></returns>
         [Route("fibonacci/{number}")]
         public HttpResponseMessage GetFibonacci(int number)
         {
@@ -46,12 +54,17 @@ namespace MVCAppli.Controllers
             }
         }
 
-        public int GetFibonacciResult(int n)
+        /// <summary>
+        /// Fibonacci formula
+        /// </summary>
+        /// <param name="n">number</param>
+        /// <returns>number</returns>
+        public int GetFibonacciResult(int number)
         {
             int a = 0;
             int b = 1;
             // In N steps compute Fibonacci sequence iteratively.
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < number; i++)
             {
                 int temp = a;
                 a = b;
@@ -63,6 +76,11 @@ namespace MVCAppli.Controllers
 
         #region XmlToJson
         // POST: api/Test/xmltojson
+        /// <summary>
+        /// Method which convert xml content to json
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
         [Route("xmltojson")]
         public HttpResponseMessage PostXmlToJson([FromBody]string xml)
         {
