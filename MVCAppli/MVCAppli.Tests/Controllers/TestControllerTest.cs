@@ -13,6 +13,9 @@ using System.IO;
 
 namespace MVCAppli.Tests.Controllers
 {
+    /// <summary>
+    /// Test Web API TestController 
+    /// </summary>
     [TestClass]
     public class TestControllerTest
     {
