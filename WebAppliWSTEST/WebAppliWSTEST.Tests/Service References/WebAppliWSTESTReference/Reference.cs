@@ -15,11 +15,12 @@ namespace WebAppliWSTEST.Tests.WebAppliWSTESTReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/WebAppliWSTEST/", ConfigurationName="WebAppliWSTESTReference.WebServiceTestSoap")]
     public interface WebServiceTestSoap {
         
+        // CODEGEN: Generating message contract since element name FibonacciResult from namespace http://localhost/WebAppliWSTEST/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/WebAppliWSTEST/Fibonacci", ReplyAction="*")]
-        long Fibonacci(long number);
+        WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse Fibonacci(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/WebAppliWSTEST/Fibonacci", ReplyAction="*")]
-        System.Threading.Tasks.Task<long> FibonacciAsync(long number);
+        System.Threading.Tasks.Task<WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse> FibonacciAsync(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest request);
         
         // CODEGEN: Generating message contract since element name xml from namespace http://localhost/WebAppliWSTEST/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/WebAppliWSTEST/XmlToJson", ReplyAction="*")]
@@ -27,6 +28,74 @@ namespace WebAppliWSTEST.Tests.WebAppliWSTESTReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/WebAppliWSTEST/XmlToJson", ReplyAction="*")]
         System.Threading.Tasks.Task<WebAppliWSTEST.Tests.WebAppliWSTESTReference.XmlToJsonResponse> XmlToJsonAsync(WebAppliWSTEST.Tests.WebAppliWSTESTReference.XmlToJsonRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FibonacciRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Fibonacci", Namespace="http://localhost/WebAppliWSTEST/", Order=0)]
+        public WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequestBody Body;
+        
+        public FibonacciRequest() {
+        }
+        
+        public FibonacciRequest(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/WebAppliWSTEST/")]
+    public partial class FibonacciRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int number;
+        
+        public FibonacciRequestBody() {
+        }
+        
+        public FibonacciRequestBody(int number) {
+            this.number = number;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FibonacciResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FibonacciResponse", Namespace="http://localhost/WebAppliWSTEST/", Order=0)]
+        public WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponseBody Body;
+        
+        public FibonacciResponse() {
+        }
+        
+        public FibonacciResponse(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/WebAppliWSTEST/")]
+    public partial class FibonacciResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string FibonacciResult;
+        
+        public FibonacciResponseBody() {
+        }
+        
+        public FibonacciResponseBody(string FibonacciResult) {
+            this.FibonacciResult = FibonacciResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -124,12 +193,29 @@ namespace WebAppliWSTEST.Tests.WebAppliWSTESTReference {
                 base(binding, remoteAddress) {
         }
         
-        public long Fibonacci(long number) {
-            return base.Channel.Fibonacci(number);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse WebAppliWSTEST.Tests.WebAppliWSTESTReference.WebServiceTestSoap.Fibonacci(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest request) {
+            return base.Channel.Fibonacci(request);
         }
         
-        public System.Threading.Tasks.Task<long> FibonacciAsync(long number) {
-            return base.Channel.FibonacciAsync(number);
+        public string Fibonacci(int number) {
+            WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest inValue = new WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest();
+            inValue.Body = new WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequestBody();
+            inValue.Body.number = number;
+            WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse retVal = ((WebAppliWSTEST.Tests.WebAppliWSTESTReference.WebServiceTestSoap)(this)).Fibonacci(inValue);
+            return retVal.Body.FibonacciResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse> WebAppliWSTEST.Tests.WebAppliWSTESTReference.WebServiceTestSoap.FibonacciAsync(WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest request) {
+            return base.Channel.FibonacciAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse> FibonacciAsync(int number) {
+            WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest inValue = new WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequest();
+            inValue.Body = new WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciRequestBody();
+            inValue.Body.number = number;
+            return ((WebAppliWSTEST.Tests.WebAppliWSTESTReference.WebServiceTestSoap)(this)).FibonacciAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

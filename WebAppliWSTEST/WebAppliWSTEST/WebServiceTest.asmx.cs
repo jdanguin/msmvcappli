@@ -2,12 +2,14 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Xml;
+using System.Numerics;
 
 namespace WebAppliWSTEST
 {
@@ -26,14 +28,14 @@ namespace WebAppliWSTEST
         #region Fibonacci
         // Fibonacci
         /// <summary>
-        /// Use fibonacci formula with long number
+        /// Use fibonacci formula with BigInt number
         /// with accept segmentation (of 1 to 100) else return -1
         /// </summary>
         /// <param name="number">input number</param>
         /// <returns></returns>
-        [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
-        public long Fibonacci(long number)
+        public string Fibonacci(int number)
         {
             Context.Response.Clear();
             Context.Response.ContentType = "application/json";
@@ -41,7 +43,7 @@ namespace WebAppliWSTEST
             try
             {
                 Log.Info(string.Format("Request Fibonacci - number: {0}", number));
-                long resultNumber;
+                BigInteger resultNumber;
                 if (number >= 1 && number <= 100)
                 {
                     resultNumber = GetFibonacciResult(number);
@@ -51,13 +53,13 @@ namespace WebAppliWSTEST
                     resultNumber = -1;
                 }
                 Log.Info(string.Format("Response Fibonacci - number {0} - return number {1}", number, resultNumber));
-                return resultNumber;
+                return resultNumber.ToString();
             }
             catch (Exception ex)
             {
                 var message = String.Format("Error Fibonacci Method");
                 Log.Error(message, ex);
-                return 0;
+                return string.Empty; ;
             }
         }
 
@@ -66,14 +68,14 @@ namespace WebAppliWSTEST
         /// </summary>
         /// <param name="n">number</param>
         /// <returns>number</returns>
-        public long GetFibonacciResult(long number)
+        public BigInteger GetFibonacciResult(int number)
         {
-            long a = 0;
-            long b = 1;
+            BigInteger a = 0;
+            BigInteger b = 1;
             // In N steps compute Fibonacci sequence iteratively.
-            for (long i = 0; i < number; i++)
+            for (BigInteger i = 0; i < number; i++)
             {
-                long temp = a;
+                BigInteger temp = a;
                 a = b;
                 b = temp + b;
             }

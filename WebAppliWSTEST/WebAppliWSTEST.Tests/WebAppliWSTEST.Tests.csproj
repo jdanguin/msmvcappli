@@ -43,6 +43,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -63,17 +64,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebAppliWSTEST\WebAppliWSTEST.csproj">
-      <Project>{1C085230-641D-4EA1-931E-6FBB8B144766}</Project>
-      <Name>WebAppliWSTEST</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Service References\WebAppliWSTESTReference\WebAppliWSTEST.Tests.WebAppliWSTESTReference.FibonacciResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WebAppliWSTESTReference\WebAppliWSTEST.Tests.WebAppliWSTESTReference.XmlToJsonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppliWSTEST", "WebAppliWSTEST\WebAppliWSTEST.csproj", "{1C085230-641D-4EA1-931E-6FBB8B144766}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppliWSTEST.Tests", "WebAppliWSTEST.Tests\WebAppliWSTEST.Tests.csproj", "{B3295F3B-4558-45A4-9E5C-0E85DAA8C558}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1C085230-641D-4EA1-931E-6FBB8B144766} = {1C085230-641D-4EA1-931E-6FBB8B144766}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

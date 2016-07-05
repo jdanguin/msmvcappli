@@ -5,14 +5,14 @@
       <s:element name="Fibonacci">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="number" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="number" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="FibonacciResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="FibonacciResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="FibonacciResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>

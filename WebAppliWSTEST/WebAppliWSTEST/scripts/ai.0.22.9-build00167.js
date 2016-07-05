@@ -57,16 +57,16 @@ var Microsoft;
             _InternalMessageId[_InternalMessageId["USRACT_ItemNotInArray"] = 46] = "USRACT_ItemNotInArray";
             _InternalMessageId[_InternalMessageId["USRACT_MaxAjaxPerPVExceeded"] = 47] = "USRACT_MaxAjaxPerPVExceeded";
             _InternalMessageId[_InternalMessageId["USRACT_MessageTruncated"] = 48] = "USRACT_MessageTruncated";
-            _InternalMessageId[_InternalMessageId["USRACT_NameTooLong"] = 49] = "USRACT_NameTooLong";
+            _InternalMessageId[_InternalMessageId["USRACT_NameTooBigInt"] = 49] = "USRACT_NameTooBigInt";
             _InternalMessageId[_InternalMessageId["USRACT_SampleRateOutOfRange"] = 50] = "USRACT_SampleRateOutOfRange";
             _InternalMessageId[_InternalMessageId["USRACT_SetAuthContextFailed"] = 51] = "USRACT_SetAuthContextFailed";
             _InternalMessageId[_InternalMessageId["USRACT_SetAuthContextFailedAccountName"] = 52] = "USRACT_SetAuthContextFailedAccountName";
-            _InternalMessageId[_InternalMessageId["USRACT_StringValueTooLong"] = 53] = "USRACT_StringValueTooLong";
+            _InternalMessageId[_InternalMessageId["USRACT_StringValueTooBigInt"] = 53] = "USRACT_StringValueTooBigInt";
             _InternalMessageId[_InternalMessageId["USRACT_StartCalledMoreThanOnce"] = 54] = "USRACT_StartCalledMoreThanOnce";
             _InternalMessageId[_InternalMessageId["USRACT_StopCalledWithoutStart"] = 55] = "USRACT_StopCalledWithoutStart";
             _InternalMessageId[_InternalMessageId["USRACT_TelemetryInitializerFailed"] = 56] = "USRACT_TelemetryInitializerFailed";
             _InternalMessageId[_InternalMessageId["USRACT_TrackArgumentsNotSpecified"] = 57] = "USRACT_TrackArgumentsNotSpecified";
-            _InternalMessageId[_InternalMessageId["USRACT_UrlTooLong"] = 58] = "USRACT_UrlTooLong";
+            _InternalMessageId[_InternalMessageId["USRACT_UrlTooBigInt"] = 58] = "USRACT_UrlTooBigInt";
         })(ApplicationInsights._InternalMessageId || (ApplicationInsights._InternalMessageId = {}));
         var _InternalMessageId = ApplicationInsights._InternalMessageId;
         var _InternalLogMessage = (function () {
@@ -1865,7 +1865,7 @@ var Microsoft;
                             }
                             if (name.length > DataSanitizer.MAX_NAME_LENGTH) {
                                 name = name.substring(0, DataSanitizer.MAX_NAME_LENGTH);
-                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_NameTooLong, "name is too long.  It has been truncated to " + DataSanitizer.MAX_NAME_LENGTH + " characters.", { name: name }));
+                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_NameTooBigInt, "name is too BigInt.  It has been truncated to " + DataSanitizer.MAX_NAME_LENGTH + " characters.", { name: name }));
                             }
                         }
                         return name;
@@ -1875,7 +1875,7 @@ var Microsoft;
                             value = ApplicationInsights.Util.trim(value);
                             if (value.toString().length > DataSanitizer.MAX_STRING_LENGTH) {
                                 value = value.toString().substring(0, DataSanitizer.MAX_STRING_LENGTH);
-                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_StringValueTooLong, "string value is too long. It has been truncated to " + DataSanitizer.MAX_STRING_LENGTH + " characters.", { value: value }));
+                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_StringValueTooBigInt, "string value is too BigInt. It has been truncated to " + DataSanitizer.MAX_STRING_LENGTH + " characters.", { value: value }));
                             }
                         }
                         return value;
@@ -1884,7 +1884,7 @@ var Microsoft;
                         if (url) {
                             if (url.length > DataSanitizer.MAX_URL_LENGTH) {
                                 url = url.substring(0, DataSanitizer.MAX_URL_LENGTH);
-                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_UrlTooLong, "url is too long, it has been trucated to " + DataSanitizer.MAX_URL_LENGTH + " characters.", { url: url }));
+                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_UrlTooBigInt, "url is too BigInt, it has been trucated to " + DataSanitizer.MAX_URL_LENGTH + " characters.", { url: url }));
                             }
                         }
                         return url;
@@ -1893,7 +1893,7 @@ var Microsoft;
                         if (message) {
                             if (message.length > DataSanitizer.MAX_MESSAGE_LENGTH) {
                                 message = message.substring(0, DataSanitizer.MAX_MESSAGE_LENGTH);
-                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_MessageTruncated, "message is too long, it has been trucated to " + DataSanitizer.MAX_MESSAGE_LENGTH + " characters.", { message: message }));
+                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_MessageTruncated, "message is too BigInt, it has been trucated to " + DataSanitizer.MAX_MESSAGE_LENGTH + " characters.", { message: message }));
                             }
                         }
                         return message;
@@ -1902,7 +1902,7 @@ var Microsoft;
                         if (exception) {
                             if (exception.length > DataSanitizer.MAX_EXCEPTION_LENGTH) {
                                 exception = exception.substring(0, DataSanitizer.MAX_EXCEPTION_LENGTH);
-                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_ExceptionTruncated, "exception is too long, it has been trucated to " + DataSanitizer.MAX_EXCEPTION_LENGTH + " characters.", { exception: exception }));
+                                ApplicationInsights._InternalLogging.throwInternalUserActionable(ApplicationInsights.LoggingSeverity.WARNING, new ApplicationInsights._InternalLogMessage(ApplicationInsights._InternalMessageId.USRACT_ExceptionTruncated, "exception is too BigInt, it has been trucated to " + DataSanitizer.MAX_EXCEPTION_LENGTH + " characters.", { exception: exception }));
                             }
                         }
                         return exception;

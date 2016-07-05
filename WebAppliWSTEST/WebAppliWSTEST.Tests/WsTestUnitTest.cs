@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System.Numerics;
 
 namespace WebAppliWSTEST.Tests
 {
@@ -18,10 +19,10 @@ namespace WebAppliWSTEST.Tests
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
 
             //Act
-            long resultNumber = service.Fibonacci(0);
-
+            var response = service.Fibonacci(0);
+            var resultNumber = BigInteger.Parse(response);
             //Assert
-            Assert.AreEqual(-1, resultNumber);
+            Assert.AreEqual(BigInteger.Parse("-1"), resultNumber);
         }
 
         [TestMethod]
@@ -31,23 +32,10 @@ namespace WebAppliWSTEST.Tests
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
 
             //Act
-            long resultNumber = service.Fibonacci(1);
-
+            var response = service.Fibonacci(1);
+            var resultNumber = BigInteger.Parse(response);
             //Assert
-            Assert.AreEqual(1, resultNumber);
-        }
-
-        [TestMethod]
-        public void TestWSFibonacciNumber2()
-        {
-            // Arrange
-            var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
-
-            //Act
-            long resultNumber = service.Fibonacci(2);
-
-            //Assert
-            Assert.AreEqual(1, resultNumber);
+            Assert.AreEqual(BigInteger.Parse("1"), resultNumber);
         }
 
         [TestMethod]
@@ -57,10 +45,10 @@ namespace WebAppliWSTEST.Tests
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
 
             //Act
-            long resultNumber = service.Fibonacci(75);
-
+            var response = service.Fibonacci(75);
+            var resultNumber = BigInteger.Parse(response);
             //Assert
-            Assert.AreEqual(2111485077978050, resultNumber);
+            Assert.AreEqual(BigInteger.Parse("2111485077978050"), resultNumber);
 
         }
 
@@ -69,13 +57,11 @@ namespace WebAppliWSTEST.Tests
         {
             // Arrange
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
-
             //Act
-            long resultNumber = service.Fibonacci(100);
-
+            var response = service.Fibonacci(100);
+            var resultNumber = BigInteger.Parse(response.ToString());
             //Assert
-            Assert.AreEqual(3736710778780434371, resultNumber);
-
+            Assert.AreEqual(BigInteger.Parse("354224848179261915075"), resultNumber);
         }
 
         [TestMethod]
@@ -85,10 +71,10 @@ namespace WebAppliWSTEST.Tests
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
 
             //Act
-            long resultNumber = service.Fibonacci(1000);
-
+            var response = service.Fibonacci(1000);
+            var resultNumber = BigInteger.Parse(response.ToString());
             //Assert
-            Assert.AreEqual(-1, resultNumber);
+            Assert.AreEqual(BigInteger.Parse("-1"), resultNumber);
         }
         #endregion
 
