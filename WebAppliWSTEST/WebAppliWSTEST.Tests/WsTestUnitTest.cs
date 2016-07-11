@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using WebAppliWSTEST.Tests.WebAppliWSTESTReference;
 using System.Numerics;
 
 namespace WebAppliWSTEST.Tests
@@ -20,7 +22,7 @@ namespace WebAppliWSTEST.Tests
 
             //Act
             var response = service.Fibonacci(0);
-            var resultNumber = BigInteger.Parse(response);
+            var resultNumber = BigInteger.Parse(response.ToString());
             //Assert
             Assert.AreEqual(BigInteger.Parse("-1"), resultNumber);
         }
@@ -33,7 +35,7 @@ namespace WebAppliWSTEST.Tests
 
             //Act
             var response = service.Fibonacci(1);
-            var resultNumber = BigInteger.Parse(response);
+            var resultNumber = BigInteger.Parse(response.ToString());
             //Assert
             Assert.AreEqual(BigInteger.Parse("1"), resultNumber);
         }
@@ -43,10 +45,9 @@ namespace WebAppliWSTEST.Tests
         {
             // Arrange
             var service = new WebAppliWSTESTReference.WebServiceTestSoapClient();
-
             //Act
             var response = service.Fibonacci(75);
-            var resultNumber = BigInteger.Parse(response);
+            var resultNumber = BigInteger.Parse(response.ToString());
             //Assert
             Assert.AreEqual(BigInteger.Parse("2111485077978050"), resultNumber);
 
@@ -105,6 +106,7 @@ namespace WebAppliWSTEST.Tests
             //Assert
             Assert.AreEqual("Bad Xml format", responseJson);
         }
+
         #endregion
     }
 }

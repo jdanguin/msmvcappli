@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Xml;
-using System.Numerics;
 
 namespace WebAppliWSTEST
 {
@@ -33,17 +33,15 @@ namespace WebAppliWSTEST
         /// </summary>
         /// <param name="number">input number</param>
         /// <returns></returns>
-        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         public string Fibonacci(int number)
         {
-            Context.Response.Clear();
-            Context.Response.ContentType = "application/json";
-
+            BigInteger resultNumber = 0;
             try
             {
                 Log.Info(string.Format("Request Fibonacci - number: {0}", number));
-                BigInteger resultNumber;
+                
                 if (number >= 1 && number <= 100)
                 {
                     resultNumber = GetFibonacciResult(number);
@@ -53,13 +51,13 @@ namespace WebAppliWSTEST
                     resultNumber = -1;
                 }
                 Log.Info(string.Format("Response Fibonacci - number {0} - return number {1}", number, resultNumber));
-                return resultNumber.ToString();
+                return JsonConvert.SerializeObject(resultNumber);
             }
             catch (Exception ex)
             {
                 var message = String.Format("Error Fibonacci Method");
                 Log.Error(message, ex);
-                return string.Empty; ;
+                return JsonConvert.SerializeObject(resultNumber);
             }
         }
 
@@ -81,6 +79,7 @@ namespace WebAppliWSTEST
             }
             return a;
         }
+
         #endregion
 
         #region XMLToJson
@@ -90,8 +89,8 @@ namespace WebAppliWSTEST
         /// </summary>
         /// <param name="xml">string</param>
         /// <returns>string (json text)</returns>
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public string XmlToJson(string xml)
         {
             try
